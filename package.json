@@ -1,0 +1,37 @@
+{
+  "name": "tilestrata-utfmerge",
+  "version": "0.0.1",
+  "description": "A TileStrata plugin for merging utfgrids",
+  "author": "Brandon Reavis <brandon@naturalatlas.com>",
+  "license": "Apache License, v2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R tap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naturalatlas/tilestrata-utfmerge.git"
+  },
+  "keywords": [
+    "tilestrata",
+    "tilestrata-plugin",
+    "tilestrata-provider",
+    "utfgrid",
+    "interactivity"
+  ],
+  "bugs": {
+    "url": "https://github.com/naturalatlas/tilestrata-utfmerge/issues"
+  },
+  "homepage": "https://github.com/naturalatlas/tilestrata-utfmerge",
+  "dependencies": {
+    "tilestrata": "^0.7.1",
+    "tilestrata-dependency": "^0.2.1"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1"
+  },
+  "peerDependencies": {
+    "tilestrata": "*"
+  }
+}
