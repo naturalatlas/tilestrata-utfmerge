@@ -1,6 +1,9 @@
 # tilestrata-utfmerge
+[![NPM version](http://img.shields.io/npm/v/tilestrata-utfmerge.svg?style=flat)](https://www.npmjs.org/package/tilestrata-utfmerge)
+[![Build Status](http://img.shields.io/travis/naturalatlas/tilestrata-utfmerge/master.svg?style=flat)](https://travis-ci.org/naturalatlas/tilestrata-utfmerge)
+[![Coverage Status](http://img.shields.io/coveralls/naturalatlas/tilestrata-utfmerge/master.svg?style=flat)](https://coveralls.io/r/naturalatlas/tilestrata-utfmerge)
 
-A TileStrata plugin for merging JSON [utfgrids](https://github.com/mapbox/utfgrid-spec), usually provided by the [tilestrata-mapnik](https://github.com/naturalatlas/tilestrata-mapnik) plugin.
+A [TileStrata](https://github.com/naturalatlas/tilestrata) plugin for merging JSON [utfgrids](https://github.com/mapbox/utfgrid-spec), usually provided by the [tilestrata-mapnik](https://github.com/naturalatlas/tilestrata-mapnik) plugin.
 
 ### Sample Usage
 
