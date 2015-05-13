@@ -16,10 +16,12 @@ module.exports = function(grids, options){
 function merge(a, b){
 	var grid_c = [];
 	var data_c = {};
+	var keys_c = [""];
+	var key = 1;
+	var key_mapping_a = {};
+	var key_mapping_b = {};
 
 	var dim = a.grid.length;
-	var offset = b.keys.length;
-
 	for(var y = 0; y < dim; y++){
 		var row_a = a.grid[y];
 		var row_b = b.grid[y];
@@ -28,22 +30,37 @@ function merge(a, b){
 			var id_a = decode(row_a.charCodeAt(x));
 			var id_b = decode(row_b.charCodeAt(x));
 			var id_c = 0;
-			if(b.data[id_b]){
-				id_c = id_b;
-				data_c[id_c] = b.data[id_b];
-			} else if (a.data[id_a]) {
-				id_c = id_a + offset;
-				data_c[id_c] = a.data[id_a];
+			var key_a = a.keys[id_a];
+			var key_b = b.keys[id_b];
+			var key_c = 0;
+			if(b.data[key_b]){
+				key_c = key_mapping_b[key_b];
+				if(!key_c) {
+					key_c = (key++).toString();
+					key_mapping_b[key_b] = key_c;
+					keys_c.push(key_c);
+				}
+				data_c[key_c] = b.data[key_b];
+				id_c = keys_c.indexOf(key_c);
+			} else if (a.data[key_a]) {
+				key_c = key_mapping_a[key_a];
+				if(!key_c) {
+					key_c = (key++).toString();
+					key_mapping_a[key_a] = key_c;
+					keys_c.push(key_c);
+				}
+				data_c[key_c] = a.data[id_a];
+				id_c = keys_c.indexOf(key_c);
 			}
 			row_c.push(encode(id_c));
 		}
-		grid_c.push(row.join(''));
+		grid_c.push(row_c.join(''));
 	}
 
 	return {
 		grid: grid_c,
 		data: data_c,
-		keys: Object.keys(data_c)
+		keys: keys_c
 	};
 }
 
