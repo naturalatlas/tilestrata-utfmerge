@@ -1,3 +1,4 @@
+var async = require('async');
 var dependency = require('tilestrata-dependency');
 var blend = require('./blend.js');
 
@@ -18,7 +19,8 @@ module.exports = function(layers, options) {
 				function loadTiles(callback) {
 					async.map(layers, function(layer, callback) {
 						layer.serve(server, req, function(err, buffer, headers) {
-							callback(err, buffer._utfgrid);
+							var data = buffer._utfgrid || JSON.parse(buffer.toString('utf8'));
+							callback(err, data);
 						});
 					}, function(err, result) {
 						grids = result;
@@ -30,10 +32,11 @@ module.exports = function(layers, options) {
 					result = new Buffer(JSON.stringify(merged), 'utf8');
 					result._utfgrid = merged;
 					grids = null;
+					callback();
 				}
 			], function(err) {
 				if (err) return callback(err);
-				callback(null, result, {'Content-Type': 'application/json')});
+				callback(null, result, {'Content-Type': 'application/json'});
 			});
 		}
 	};
