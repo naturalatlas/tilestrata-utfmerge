@@ -49,7 +49,7 @@ function merge(a, b) {
 					key_mapping_a[key_a] = key_c;
 					keys_c.push(key_c);
 				}
-				data_c[key_c] = a.data[id_a];
+				data_c[key_c] = a.data[key_a];
 				id_c = keys_c.indexOf(key_c);
 			}
 			row_c.push(encode(id_c));
