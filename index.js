@@ -12,6 +12,7 @@ module.exports = function(layers, options) {
 	});
 
 	return {
+		name: 'utfmerge',
 		serve: function(server, req, callback) {
 			var grids, result;
 
@@ -36,7 +37,7 @@ module.exports = function(layers, options) {
 				}
 			], function(err) {
 				if (err) return callback(err);
-				callback(null, result, {'Content-Type': 'application/json'});
+				callback(null, result, {'Content-Type': 'application/json; charset=utf-8'});
 			});
 		}
 	};

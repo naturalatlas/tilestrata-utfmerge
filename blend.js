@@ -65,13 +65,13 @@ function merge(a, b) {
 }
 
 function decode(x) {
-	if(x >= 93) x--;
-	if(x >= 35) x--;
+	if (x >= 93) x--;
+	if (x >= 35) x--;
 	return x - 32;
 }
 function encode(x) {
 	x += 32;
-	if(x >= 34) x++;
-	if(x >= 92) x++;
+	if (x >= 34) x++;
+	if (x >= 92) x++;
 	return String.fromCharCode(x);
 }

@@ -7,7 +7,8 @@ var a = require('./fixtures/a.js');
 
 describe('Plugin', function() {
 	it('should operate normally', function(done) {
-		var server = tilestrata.createServer();
+		var server = tilestrata();
+
 		server.layer('mylayer').route('a.json').use({
 			serve: function(server, tile, callback) {
 				var data = a.inputs[0];
@@ -26,6 +27,8 @@ describe('Plugin', function() {
 
 		var tile = TileRequest.parse('/mylayer/0/0/0/c.json');
 		var plugin = utfmerge([['mylayer','a.json'],['mylayer','b.json']]);
+		assert.equal(plugin.name, 'utfmerge');
+
 		plugin.serve(server, tile, function(err, buffer, headers) {
 			assert.isFalse(!!err, err);
 			utils.assertGridEqual(JSON.parse(buffer.toString('utf8')), a.result);
