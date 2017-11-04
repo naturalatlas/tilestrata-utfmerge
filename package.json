@@ -1,6 +1,6 @@
 {
   "name": "tilestrata-utfmerge",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A TileStrata plugin for merging utfgrids",
   "author": "Brandon Reavis <brandon@naturalatlas.com>",
   "license": "Apache-2.0",
