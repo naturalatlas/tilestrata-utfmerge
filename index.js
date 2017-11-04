@@ -20,6 +20,7 @@ module.exports = function(layers, options) {
 				function loadTiles(callback) {
 					async.map(layers, function(layer, callback) {
 						layer.serve(server, req, function(err, buffer, headers) {
+							if (err) return callback(err);
 							var data = buffer._utfgrid || JSON.parse(buffer.toString('utf8'));
 							callback(err, data);
 						});
